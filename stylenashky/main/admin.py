@@ -1,3 +1,19 @@
 from django.contrib import admin
+from .models import Product, Customer
 
-# Register your models here.
+from import_export.admin import ImportExportActionModelAdmin
+from import_export import resources
+
+class ProductResource(resources.ModelResource):
+
+
+    class Meta:
+        model = Product
+
+class ProductAdmin(ImportExportActionModelAdmin):
+# class CalcAdmin(ExportMixin,admin.ModelAdmin):
+    resource_class =ProductResource
+
+    list_display = ['title',]
+
+admin.site.register(Product,ProductAdmin)
