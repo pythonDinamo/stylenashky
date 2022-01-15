@@ -10,7 +10,6 @@ class Product(models.Model):
     stock_in_bag = models.PositiveIntegerField(verbose_name='Количество вещей в мешке')
     avg_price = models.DecimalField(verbose_name='Средняя себестоимость вещи руб.', decimal_places=2, max_digits=6)
     published_at = models.BooleanField(default=False, verbose_name='Опубликовано')
-    url = models.ForeignKey('URL', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -46,6 +45,7 @@ class Contact(models.Model):
 class URL(models.Model):
     short_name = models.CharField(verbose_name='Описание видео', max_length=100)
     url = models.URLField(verbose_name='Ссылка для видео')
+    products = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт')
 
     def __str__(self):
         return self.short_name
