@@ -9,10 +9,10 @@ class Product(models.Model):
     massa = models.DecimalField(verbose_name='Средний вес мешка', max_digits=6, decimal_places=2)
     stock_in_bag = models.PositiveIntegerField(verbose_name='Количество вещей в мешке')
     avg_price = models.DecimalField(verbose_name='Средняя себестоимость вещи руб.', decimal_places=2, max_digits=6)
-    published_at = models.BooleanField(default=False, verbose_name='Опубликовано')
+    published_at = models.BooleanField(default=True, verbose_name='Опубликовано')
 
     def __str__(self):
-        return self.title
+        return f'({self.number_product}){self.title}'
 
     class Meta:
         verbose_name = 'Продукт'
@@ -22,6 +22,9 @@ class Product(models.Model):
 class Customer(models.Model):
     phone = models.CharField(verbose_name='Номер телефона', max_length=25)
     complete = models.BooleanField(verbose_name='Обработано', default=False)
+
+    def __str__(self):
+        return self.phone
 
     class Meta:
         verbose_name = 'Клиент'
@@ -42,6 +45,7 @@ class Contact(models.Model):
 class URL(models.Model):
     short_name = models.CharField(verbose_name='Описание видео', max_length=100)
     url = models.URLField(verbose_name='Ссылка для видео')
+    products = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт')
 
     def __str__(self):
         return self.short_name
