@@ -1,0 +1,47 @@
+.section__about {
+    padding: 134px 0 96px 0;
+    font-family: Segoe UI;
+    font-style: normal;
+}
+.about__title {
+    width: 581px;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 130%;
+    color: #002033;
+}
+.about__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.about__text {
+    & h3{
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 120%;
+        color: #E02348;
+        margin-bottom: 16px;
+    }
+    & p{
+        width: 490px;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 145%;
+        color: #002033;
+    }
+    & span{
+        font-weight: 700;
+    }
+}
+.about__image {
+    position: relative;
+}
+.about__card-position {
+    position: absolute;
+    bottom: 0;
+    right: -60px;
+}
+.position-left{
+    right: 0;
+}
