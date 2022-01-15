@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Customer
+from .models import Product, Customer, Contact, URL
 
 from import_export.admin import ImportExportActionModelAdmin
 from import_export import resources
@@ -17,3 +17,6 @@ class ProductAdmin(ImportExportActionModelAdmin):
     list_display = ['title',]
 
 admin.site.register(Product,ProductAdmin)
+admin.site.register(Customer)
+admin.site.register(Contact)
+admin.site.register(URL)
