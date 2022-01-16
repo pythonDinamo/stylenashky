@@ -9,10 +9,10 @@ class Product(models.Model):
     massa = models.DecimalField(verbose_name='Средний вес мешка', max_digits=6, decimal_places=2)
     stock_in_bag = models.PositiveIntegerField(verbose_name='Количество вещей в мешке')
     avg_price = models.DecimalField(verbose_name='Средняя себестоимость вещи руб.', decimal_places=2, max_digits=6)
-    published_at = models.BooleanField(default=False, verbose_name='Опубликовано')
+    published_at = models.BooleanField(default=True, verbose_name='Опубликовано')
 
     def __str__(self):
-        return self.title
+        return f'({self.number_product}){self.title}'
 
     class Meta:
         verbose_name = 'Продукт'
