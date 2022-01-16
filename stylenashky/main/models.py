@@ -58,7 +58,7 @@ class Contact(models.Model):
 class URL(models.Model):
     short_name = models.CharField(verbose_name='Описание видео', max_length=100)
     url = models.URLField(verbose_name='Ссылка для видео')
-    products = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт')
+    products = models.ForeignKey('Product', related_name='url', on_delete=models.CASCADE, verbose_name='Продукт')
 
     def __str__(self):
         return self.short_name

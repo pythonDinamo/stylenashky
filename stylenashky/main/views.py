@@ -1,9 +1,15 @@
+
 import requests
 import warnings
-
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
+
+from main.models import Product, URL
+from main.serializers import ProductSerializer, ProductFilterSerializer
 from .forms import PhoneForm
 
 
@@ -39,3 +45,17 @@ def phone_form_view(request):
             return redirect('main_view')
     context = {'phone_form': phone_form}
     return render(request, 'index.html', context)
+
+@api_view(['GET'])
+def all_video(request):
+    video = Product.objects.all()
+    serializer = ProductSerializer(video, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def detail_product(request, title):
+    product = Product.objects.filter(title=title)
+    serializer = ProductFilterSerializer(product, many=True)
+    return Response(serializer.data)
+  
