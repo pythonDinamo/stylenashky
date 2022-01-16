@@ -2,7 +2,9 @@ from django.db import models
 
 
 class Product(models.Model):
+    # number_product = models.PositiveIntegerField(verbose_name='Код',unique=False)
     number_product = models.PositiveIntegerField(verbose_name='Код')
+    # title = models.CharField(verbose_name='Наименование', max_length=100, db_index=True,unique=False)
     title = models.CharField(verbose_name='Наименование', max_length=100, db_index=True)
     price = models.DecimalField(verbose_name='Цена в евро по курсу НБРБ на дату расчета', max_digits=6, decimal_places=2)
     stock = models.DecimalField(verbose_name='Остаток на конец', max_digits=6, decimal_places=2)
@@ -15,6 +17,7 @@ class Product(models.Model):
         return f'({self.number_product}){self.title}'
 
     class Meta:
+        unique_together = (('number_product', 'title'),)
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
 
