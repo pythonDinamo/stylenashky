@@ -1,4 +1,17 @@
+import re
+
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+
+def validate_phone(value):
+    validation_expression = r'^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$'
+    if not re.match(validation_expression, value):
+        raise ValidationError(
+            _('Номер телефона должен быть в формате +375(XX)XXX-XX-XX'),
+            code='invalid_phone_format'
+        )
 
 
 class Product(models.Model):
@@ -20,11 +33,11 @@ class Product(models.Model):
 
 
 class Customer(models.Model):
-    phone = models.CharField(verbose_name='Номер телефона', max_length=25)
+    user_tel = models.CharField(verbose_name='Номер телефона', max_length=25, validators=[validate_phone])
     complete = models.BooleanField(verbose_name='Обработано', default=False)
 
     def __str__(self):
-        return self.phone
+        return self.user_tel
 
     class Meta:
         verbose_name = 'Клиент'

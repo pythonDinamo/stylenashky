@@ -19,8 +19,9 @@ class ProductAdmin(ImportExportActionModelAdmin):
     list_editable = ['published_at',]
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('phone', 'complete')
+    list_display = ('user_tel', 'complete')
     list_editable = ('complete',)
+
 
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Customer, CustomerAdmin)

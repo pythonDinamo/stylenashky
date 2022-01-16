@@ -338,6 +338,11 @@ main {
   max-width: 411px;
 }
 
+.info__error {
+  font-size: 14px;
+  color: red;
+}
+
 .info__text span {
   font-weight: bold;
 }
