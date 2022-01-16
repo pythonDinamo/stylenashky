@@ -20,11 +20,11 @@ class Product(models.Model):
 
 
 class Customer(models.Model):
-    phone = models.CharField(verbose_name='Номер телефона', max_length=25)
+    user_tel = models.CharField(verbose_name='Номер телефона', max_length=25)
     complete = models.BooleanField(verbose_name='Обработано', default=False)
 
     def __str__(self):
-        return self.phone
+        return self.user_tel
 
     class Meta:
         verbose_name = 'Клиент'
