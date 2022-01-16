@@ -18,4 +18,4 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductFilterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = "__all__"
+        fields = ["title", "massa", "avg_price"]
