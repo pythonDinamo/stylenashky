@@ -18,6 +18,13 @@ from .models import Customer
 warnings.simplefilter('always', UserWarning)
 
 
+# TODO: Добавить токен телеграм-бота и chat_id пользователя, которому будут приходить сообщения (можно
+#  узнать у @userinfobot)
+# Telegram bot GLOBAL SETTINGS
+tele_bot_token = ''  # string
+chat_id = 123456  # int
+
+
 def main_view(request):
     phone_form = PhoneForm()
     context = {'phone_form': phone_form}
@@ -31,10 +38,6 @@ def phone_form_view(request):
             updated_values = {'complete': False}
             phone_number = phone_form.cleaned_data['user_tel']
             Customer.objects.update_or_create(user_tel=phone_number, defaults=updated_values)
-            # TODO: Добавить токен телеграм-бота и chat_id пользователя, которому будут приходить сообщения (можно
-            #  узнать у @userinfobot)
-            tele_bot_token = ''  # string
-            chat_id = 123456  # int
             response = requests.post(
                 url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
                 data={'chat_id': chat_id, 'text': f'{request.POST["user_tel"]}'}
