@@ -36,7 +36,7 @@ class Product(models.Model):
 
 
 class Customer(models.Model):
-    user_tel = models.CharField(verbose_name='Номер телефона', max_length=25, validators=[validate_phone])
+    user_tel = models.CharField(verbose_name='Номер телефона', max_length=17, validators=[validate_phone])
     complete = models.BooleanField(verbose_name='Обработано', default=False)
 
     def __str__(self):
