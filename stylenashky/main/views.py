@@ -40,7 +40,9 @@ def phone_form_view(request):
             Customer.objects.update_or_create(user_tel=phone_number, defaults=updated_values)
             response = requests.post(
                 url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
-                data={'chat_id': chat_id, 'text': f'{request.POST["user_tel"]}'}
+                data={'chat_id': chat_id,
+                      'text': f'*Поступила новая заявка:*\n\n{phone_number}',
+                      'parse_mode': 'markdown'}
             ).json()
             if not response.get('ok', False):
                 warnings.warn(f'''
