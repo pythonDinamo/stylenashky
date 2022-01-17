@@ -1,20 +1,20 @@
 import requests
+import warnings
+
 from rest_framework.decorators import api_view
 from main.models import Product, URL
 from rest_framework.response import Response
 
 from main.serializers import ProductSerializer, ProductFilterSerializer, ProductAllSerializer
-import warnings
 
 from django.shortcuts import render, redirect
-from django.urls import reverse
+
 
 from .forms import PhoneForm
+from .models import Customer
 
 
 # Setting to show warnings everytime when occur, as it showing only once by default.
-from .models import Customer
-
 warnings.simplefilter('always', UserWarning)
 
 
