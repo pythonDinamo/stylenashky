@@ -48,3 +48,24 @@ def phone_form_view(request):
             return redirect('main_view')
     context = {'phone_form': phone_form}
     return render(request, 'index.html', context)
+
+
+@api_view(['GET'])
+def all_video(request):
+    video = Product.objects.all()
+    serializer = ProductSerializer(video, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def detail_product(request, title):
+    product = Product.objects.filter(title=title)
+    serializer = ProductFilterSerializer(product, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def product_all(request):
+    product = Product.objects.filter(published_at=True)
+    serializer = ProductAllSerializer(product, many=True)
+    return Response(serializer.data)
