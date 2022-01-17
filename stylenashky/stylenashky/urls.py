@@ -22,10 +22,13 @@ from django.urls import path, include
 from main.views import main_view, all_video, detail_product, product_all
 
 
+from main.views import main_view, phone_form_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_view, name='main_view'),
+    path('phone_submit/', phone_form_view, name='phone_submit'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api-auth/all_video/', all_video),
     path('api-auth/product/<str:title>', detail_product),

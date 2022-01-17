@@ -51,6 +51,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ('user_tel', 'complete')
     list_editable = ('complete',)
 
+
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Contact)
