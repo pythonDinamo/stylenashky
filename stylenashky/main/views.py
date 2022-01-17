@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-from main.models import Product, URL
+from main.models import Product, URL, Contact
 from rest_framework.response import Response
 
 from main.serializers import ProductSerializer, ProductFilterSerializer, ProductAllSerializer
 
 
+
 def main_view(request):
-    return render(request, 'index.html')
+    contacts = Contact.objects.all()
+    context = {'contacts': contacts}
+    return render(request, 'index.html', context)
 
 
 @api_view(['GET'])
