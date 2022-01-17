@@ -18,7 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductFilterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["massa", "avg_price"]
+        fields = ["massa", "avg_price", "stock_in_bag"]
 
 
 class ProductAllSerializer(serializers.ModelSerializer):
