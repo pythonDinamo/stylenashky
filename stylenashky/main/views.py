@@ -2,7 +2,7 @@
 import warnings
 
 from rest_framework.decorators import api_view
-from main.models import Product, URL, Contact, Address
+from main.models import Product, URL, Address
 from rest_framework.response import Response
 
 from main.serializers import ProductSerializer, ProductFilterSerializer, ProductAllSerializer
