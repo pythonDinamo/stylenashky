@@ -36,7 +36,7 @@ class Product(models.Model):
 
 
 class Customer(models.Model):
-    user_tel = models.CharField(verbose_name='Номер телефона', max_length=17, validators=[validate_phone])
+    user_tel = models.CharField(verbose_name='Номер телефона', max_length=17, validators=[validate_phone], default=0)
     complete = models.BooleanField(verbose_name='Обработано', default=False)
 
     def __str__(self):
@@ -45,6 +45,15 @@ class Customer(models.Model):
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
+
+class Address(models.Model):
+    """Address shop"""
+    phone = models.CharField(verbose_name='Номер телефона', max_length=25)
+    address = models.CharField(verbose_name='Адрес магазина', max_length=100)
+
+    class Meta:
+        verbose_name = 'Адрес'
+        verbose_name_plural = 'Адреса'
 
 
 class Contact(models.Model):

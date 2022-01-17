@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import IntegrityError
 
-from .models import Product, Customer, Contact, URL
+from .models import Product, Customer, Contact, URL, Address
 
 from import_export.admin import ImportExportActionModelAdmin
 from import_export import resources
@@ -56,4 +56,4 @@ admin.site.register(Product,ProductAdmin)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Contact)
 admin.site.register(URL)
-
+admin.site.register(Address)
