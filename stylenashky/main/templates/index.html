@@ -42,7 +42,7 @@
                                     {% for contact in contacts %}
                                     <a href="#">{{ contact.phone }}</a>
                                     <p>
-                                        {{ contact.city }} <span>{{ contact.street }} {{ contact.number }}</span>
+                                        <span>{{ contact.address }}</span>
                                     </p>
                                     {% endfor %}
                                 </li>
@@ -492,7 +492,7 @@
                                 Адрес:
                             </li>
                             <li>
-                                {{ contact.city }} {{ contact.street }} {{ contact.number }}
+                                {{ contact.address }}
                             </li>
                             {% endfor %}
                         </ul>

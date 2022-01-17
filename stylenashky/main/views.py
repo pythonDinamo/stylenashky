@@ -1,8 +1,8 @@
-import requests
+
 import warnings
 
 from rest_framework.decorators import api_view
-from main.models import Product, URL, Contact
+from main.models import Product, URL, Address
 from rest_framework.response import Response
 
 from main.serializers import ProductSerializer, ProductFilterSerializer, ProductAllSerializer
@@ -27,7 +27,7 @@ chat_id = 1234567  # int
 
 
 def main_view(request):
-    contacts = Contact.objects.all()
+    contacts = Address.objects.all()
     phone_form = PhoneForm()
     context = {'phone_form': phone_form,
               'contacts': contacts}

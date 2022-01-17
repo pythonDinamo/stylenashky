@@ -19,7 +19,8 @@ class Product(models.Model):
     number_product = models.PositiveIntegerField(verbose_name='Код')
     # title = models.CharField(verbose_name='Наименование', max_length=100, db_index=True,unique=False)
     title = models.CharField(verbose_name='Наименование', max_length=100, db_index=True)
-    price = models.DecimalField(verbose_name='Цена в евро по курсу НБРБ на дату расчета', max_digits=6, decimal_places=2)
+    price = models.DecimalField(verbose_name='Цена в евро по курсу НБРБ на дату расчета', max_digits=6,
+                                decimal_places=2)
     stock = models.DecimalField(verbose_name='Остаток на конец', max_digits=6, decimal_places=2)
     massa = models.DecimalField(verbose_name='Средний вес мешка', max_digits=6, decimal_places=2)
     stock_in_bag = models.PositiveIntegerField(verbose_name='Количество вещей в мешке')
@@ -47,15 +48,13 @@ class Customer(models.Model):
         verbose_name_plural = 'Клиенты'
 
 
-class Contact(models.Model):
+class Address(models.Model):
     phone = models.CharField(verbose_name='Номер телефона', max_length=25)
-    city = models.CharField(verbose_name='Город', max_length=100)
-    street = models.CharField(verbose_name='Улица', max_length=100)
-    number = models.CharField(verbose_name='Номер дома', max_length=5)
+    address = models.CharField(verbose_name='Адрес магазина', max_length=100)
 
     class Meta:
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
+        verbose_name = 'Адрес'
+        verbose_name_plural = 'Адреса'
 
 
 class URL(models.Model):
