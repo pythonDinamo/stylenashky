@@ -1,8 +1,23 @@
+import re
+
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+
+def validate_phone(value):
+    validation_expression = r'^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$'
+    if not re.match(validation_expression, value):
+        raise ValidationError(
+            _('Номер телефона должен быть в формате +375(XX)XXX-XX-XX'),
+            code='invalid_phone_format'
+        )
 
 
 class Product(models.Model):
+    # number_product = models.PositiveIntegerField(verbose_name='Код',unique=False)
     number_product = models.PositiveIntegerField(verbose_name='Код')
+    # title = models.CharField(verbose_name='Наименование', max_length=100, db_index=True,unique=False)
     title = models.CharField(verbose_name='Наименование', max_length=100, db_index=True)
     price = models.DecimalField(verbose_name='Цена в евро по курсу НБРБ на дату расчета', max_digits=6, decimal_places=2)
     stock = models.DecimalField(verbose_name='Остаток на конец', max_digits=6, decimal_places=2)
@@ -15,12 +30,13 @@ class Product(models.Model):
         return f'({self.number_product}){self.title}'
 
     class Meta:
+        unique_together = (('number_product', 'title'),)
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
 
 
 class Customer(models.Model):
-    user_tel = models.CharField(verbose_name='Номер телефона', max_length=25)
+    user_tel = models.CharField(verbose_name='Номер телефона', max_length=17, validators=[validate_phone])
     complete = models.BooleanField(verbose_name='Обработано', default=False)
 
     def __str__(self):
