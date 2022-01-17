@@ -85,8 +85,16 @@
                                 <div class="main__item">
                                     Выгодная цена <span>от 5 BYN за 1 кг</span>
                                 </div>
-                                <form action="#" class="main__form">
-                                    <input type="tel" placeholder="+375 (_ _) _ _ _-_ _-_ _" name="user_tel">
+                                <form action="{% url 'phone_submit' %}" method="POST" class="main__form">
+                                    {% csrf_token %}
+                                    {{ phone_form.user_tel }}
+                                    {% if phone_form.user_tel.errors %}
+                                        <ul>
+                                            {% for error in phone_form.user_tel.errors %}
+                                                <li class="info__error"><strong>{{ error|escape }}</strong></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
                                     <button>
                                         Оставить заявку
                                     </button>
@@ -158,8 +166,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <form action="#" class="video__form">
-                            <input type="tel" placeholder="+375 (_ _) _ _ _-_ _-_ _" name="user_tel">
+                        <form action="{% url 'phone_submit' %}" method="POST" class="video__form">
+                            {% csrf_token %}
+                            {{ phone_form.user_tel }}
+                            {% if phone_form.user_tel.errors %}
+                                <ul>
+                                    {% for error in phone_form.user_tel.errors %}
+                                        <li class="info__error"><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                             <button>
                                 Хочу увидеть вживую
                             </button>
@@ -259,8 +275,16 @@
                         <h3 class="calc__subtitle">
                             Оставьте номер телефона, мы перезвоним и поможем расчитать прибыль от реализации товара у Вас в городе
                         </h3>
-                        <form action="#" class="calc__form">
-                            <input type="tel" placeholder="+375 (_ _) _ _ _-_ _-_ _" name="user_tel">
+                        <form action="{% url 'phone_submit' %}" method="POST" class="calc__form">
+                            {% csrf_token %}
+                            {{ phone_form.user_tel }}
+                            {% if phone_form.user_tel.errors %}
+                                <ul>
+                                    {% for error in phone_form.user_tel.errors %}
+                                        <li class="info__error"><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                             <button>
                                 Оставить заявку
                             </button>
@@ -335,8 +359,16 @@
                                 Ждем Вас, поделимся своим опытом, расскажем как на этом <span>можно и нужно зарабатывать.</span>
                             </p>
                         </div>
-                        <form action="#" class="sales__form">
-                            <input type="tel" placeholder="+375 (_ _) _ _ _-_ _-_ _" name="user_tel">
+                        <form action="{% url 'phone_submit' %}" method="POST" class="sales__form">
+                            {% csrf_token %}
+                            {{ phone_form.user_tel }}
+                            {% if phone_form.user_tel.errors %}
+                                <ul>
+                                    {% for error in phone_form.user_tel.errors %}
+                                        <li class="info__error"><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                             <button>
                                 Оставить заявку
                             </button>
@@ -459,8 +491,16 @@
                                 г. Минск пер. Бехтерева 12
                             </li>
                         </ul>
-                        <form action="#" class="fotter__form">
-                            <input type="tel" placeholder="+375 (_ _) _ _ _-_ _-_ _" name="user_tel">
+                        <form action="{% url 'phone_submit' %}" method="POST" class="fotter__form">
+                            {% csrf_token %}
+                            {{ phone_form.user_tel }}
+                            {% if phone_form.user_tel.errors %}
+                                <ul>
+                                    {% for error in phone_form.user_tel.errors %}
+                                        <li class="info__error"><strong>{{ error|escape }}</strong></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                             <button>
                                 Оставить заявку
                             </button>
