@@ -20,8 +20,13 @@ function formatPhoneNumber(value) {
    return `${phoneNumber.slice(0, 4)}(${phoneNumber.slice(4, 6)})${phoneNumber.slice(6, 9)}-${phoneNumber.slice(9, 11)}-${phoneNumber.slice(11, 13)}`;
 }
 
-function phoneNumberFormatter() {
-    const inputField = document.getElementById('id_user_tel');
+function phoneNumberFormatter(elementId) {
+    const inputField = document.getElementById(elementId);
     const formattedInputValue = formatPhoneNumber(inputField.value);
     inputField.value = formattedInputValue;
 }
+
+const phoneInputId = 'id_user_tel';
+const phoneInputField = document.getElementById(phoneInputId);
+phoneInputField.addEventListener('keydown', function() {phoneNumberFormatter(phoneInputId)});
+phoneInputField.addEventListener('keyup', function() {phoneNumberFormatter(phoneInputId)});

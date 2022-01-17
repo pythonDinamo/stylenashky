@@ -13,6 +13,8 @@ from .forms import PhoneForm
 
 
 # Setting to show warnings everytime when occur, as it showing only once by default.
+from .models import Customer
+
 warnings.simplefilter('always', UserWarning)
 
 
@@ -26,7 +28,9 @@ def phone_form_view(request):
     if request.method == 'POST':
         phone_form = PhoneForm(request.POST)
         if phone_form.is_valid():
-            phone_form.save()
+            updated_values = {'complete': False}
+            phone_number = phone_form.cleaned_data['user_tel']
+            Customer.objects.update_or_create(user_tel=phone_number, defaults=updated_values)
             # TODO: Добавить токен телеграм-бота и chat_id пользователя, которому будут приходить сообщения (можно
             #  узнать у @userinfobot)
             tele_bot_token = ''  # string

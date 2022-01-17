@@ -10,6 +10,5 @@ class PhoneForm(forms.ModelForm):
         fields = ['user_tel']
         widgets = {'user_tel': forms.TextInput(attrs={'type': 'tel',
                                                       'placeholder': '+375 (_ _) _ _ _-_ _-_ _',
-                                                      'value': '+375',
-                                                      'onkeydown': 'phoneNumberFormatter()'})
+                                                      'value': '+375'})
                    }
