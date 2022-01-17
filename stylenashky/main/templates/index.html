@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,10 +39,12 @@
                                     <a href="#" class="menu__link">Контакты</a>
                                 </li>
                                 <li class="header__contact">
-                                    <a href="#">+375(29) 808 04 04</a>
+                                    {% for contact in contacts %}
+                                    <a href="#">{{ contact.phone }}</a>
                                     <p>
-                                        г. Минск <span>пер. Бехтерева 12</span>
+                                        {{ contact.city }} <span>{{ contact.street }} {{ contact.number }}</span>
                                     </p>
+                                    {% endfor %}
                                 </li>
                             </ul>
                         </nav>
@@ -479,17 +482,19 @@
                             <li>
                                 Телефон:
                             </li>
+                             {% for contact in contacts %}
                             <li>
                                 <a href="#" class="footer__list-link">
-                                    +375(29) 808 04 04
+                                    {{ contact.phone }}
                                 </a>
                             </li>
                             <li>
                                 Адрес:
                             </li>
                             <li>
-                                г. Минск пер. Бехтерева 12
+                                {{ contact.city }} {{ contact.street }} {{ contact.number }}
                             </li>
+                            {% endfor %}
                         </ul>
                         <form action="{% url 'phone_submit' %}" method="POST" class="fotter__form">
                             {% csrf_token %}

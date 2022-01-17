@@ -2,7 +2,7 @@ import requests
 import warnings
 
 from rest_framework.decorators import api_view
-from main.models import Product, URL
+from main.models import Product, URL, Contact
 from rest_framework.response import Response
 
 from main.serializers import ProductSerializer, ProductFilterSerializer, ProductAllSerializer
@@ -25,9 +25,12 @@ tele_bot_token = '5032118132:AAExXf9rnoBagjg4w7ga-iwLBioNi2puRd4'  # string
 chat_id = 1234567  # int
 
 
+
 def main_view(request):
+    contacts = Contact.objects.all()
     phone_form = PhoneForm()
-    context = {'phone_form': phone_form}
+    context = {'phone_form': phone_form,
+              'contacts': contacts}
     return render(request, 'index.html', context)
 
 
