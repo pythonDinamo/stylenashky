@@ -13,7 +13,6 @@ from django.shortcuts import render, redirect
 from .forms import PhoneForm
 from .models import Customer
 
-
 # Setting to show warnings everytime when occur, as it showing only once by default.
 warnings.simplefilter('always', UserWarning)
 
@@ -21,8 +20,8 @@ warnings.simplefilter('always', UserWarning)
 # TODO: Добавить токен телеграм-бота и chat_id пользователя, которому будут приходить сообщения (можно
 #  узнать у @userinfobot)
 # Telegram bot GLOBAL SETTINGS
-tele_bot_token = ''  # string
-chat_id = 123456  # int
+tele_bot_token = '5032118132:AAExXf9rnoBagjg4w7ga-iwLBioNi2puRd4'  # string
+chat_id = 1234567  # int
 
 
 def main_view(request):
