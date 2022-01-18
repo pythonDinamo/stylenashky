@@ -1,4 +1,4 @@
-
+import requests
 import warnings
 
 from rest_framework.decorators import api_view
@@ -30,7 +30,7 @@ def main_view(request):
     contacts = Address.objects.all()
     phone_form = PhoneForm()
     context = {'phone_form': phone_form,
-              'contacts': contacts}
+               'contacts': contacts}
     return render(request, 'index.html', context)
 
 
