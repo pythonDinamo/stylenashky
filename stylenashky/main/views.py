@@ -66,8 +66,8 @@ def all_video(request):
 
 
 @api_view(['GET'])
-def detail_product(request, title):
-    product = Product.objects.filter(title=title)
+def detail_product(request, id):
+    product = Product.objects.filter(id=id)
     serializer = ProductFilterSerializer(product, many=True)
     return Response(serializer.data)
 
