@@ -52,6 +52,9 @@ class Address(models.Model):
     phone = models.CharField(verbose_name='Номер телефона', max_length=25)
     address = models.CharField(verbose_name='Адрес магазина', max_length=100)
 
+    def __str__(self):
+        return self.address
+
     class Meta:
         verbose_name = 'Адрес'
         verbose_name_plural = 'Адреса'
@@ -59,7 +62,7 @@ class Address(models.Model):
 
 class URL(models.Model):
     short_name = models.CharField(verbose_name='Описание видео', max_length=100)
-    url = models.URLField(verbose_name='Ссылка для видео')
+    url = models.URLField(verbose_name='Ссылка для видео', help_text='Вставить только ссылку с ютуби')
     products = models.ForeignKey('Product', related_name='url', on_delete=models.CASCADE, verbose_name='Продукт')
 
     def __str__(self):
