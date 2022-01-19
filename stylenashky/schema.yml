@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api-auth/all_video/:
+    get:
+      operationId: all_video_retrieve
+      tags:
+      - all_video
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api-auth/product/:
+    get:
+      operationId: product_retrieve
+      tags:
+      - product
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api-auth/product/{title}:
+    get:
+      operationId: product_retrieve_2
+      parameters:
+      - in: path
+        name: title
+        schema:
+          type: string
+        required: true
+      tags:
+      - product
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

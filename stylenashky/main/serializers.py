@@ -12,7 +12,7 @@ class ProductSerializer(serializers.ModelSerializer):
     url = URLSerializer(many=True)
     class Meta:
         model = Product
-        fields = ["number_product", "url"]
+        fields = ["id", "number_product", "url"]
 
 
 class ProductFilterSerializer(serializers.ModelSerializer):
@@ -24,4 +24,4 @@ class ProductFilterSerializer(serializers.ModelSerializer):
 class ProductAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["title"]
+        fields = [ "id", "title"]

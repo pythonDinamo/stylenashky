@@ -51,6 +51,7 @@ class Customer(models.Model):
 class Address(models.Model):
     phone = models.CharField(verbose_name='Номер телефона', max_length=25)
     address = models.CharField(verbose_name='Адрес магазина', max_length=100)
+    active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Адрес'
