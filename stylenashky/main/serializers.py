@@ -24,4 +24,4 @@ class ProductFilterSerializer(serializers.ModelSerializer):
 class ProductAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["title"]
+        fields = ['id', "title"]
