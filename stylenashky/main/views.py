@@ -22,7 +22,7 @@ warnings.simplefilter('always', UserWarning)
 #  Пользователь, которому будут приходить сообщения должен добавить себе @nyashki_test_bot бота.
 # Telegram bot GLOBAL SETTINGS
 tele_bot_token = '5032118132:AAExXf9rnoBagjg4w7ga-iwLBioNi2puRd4'  # string
-chat_id = 1234567  # int
+chat_id = 448040700  # int
 
 
 
