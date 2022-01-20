@@ -1,4 +1,4 @@
-
+import requests
 import warnings
 
 from rest_framework.decorators import api_view
@@ -22,7 +22,7 @@ warnings.simplefilter('always', UserWarning)
 #  Пользователь, которому будут приходить сообщения должен добавить себе @nyashki_test_bot бота.
 # Telegram bot GLOBAL SETTINGS
 tele_bot_token = '5032118132:AAExXf9rnoBagjg4w7ga-iwLBioNi2puRd4'  # string
-chat_id = 1234567  # int
+chat_id = 448040700  # int
 
 
 
@@ -30,7 +30,7 @@ def main_view(request):
     contacts = Address.objects.all()
     phone_form = PhoneForm()
     context = {'phone_form': phone_form,
-              'contacts': contacts}
+               'contacts': contacts}
     return render(request, 'index.html', context)
 
 
@@ -66,8 +66,8 @@ def all_video(request):
 
 
 @api_view(['GET'])
-def detail_product(request, title):
-    product = Product.objects.filter(title=title)
+def detail_product(request, id):
+    product = Product.objects.filter(id=id)
     serializer = ProductFilterSerializer(product, many=True)
     return Response(serializer.data)
 

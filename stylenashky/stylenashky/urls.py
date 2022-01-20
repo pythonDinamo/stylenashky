@@ -31,7 +31,7 @@ urlpatterns = [
     path('phone_submit/', phone_form_view, name='phone_submit'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api-auth/all_video/', all_video),
-    path('api-auth/product/<str:title>', detail_product),
+    path('api-auth/product/<int:id>', detail_product),
     path('api-auth/product/', product_all)
 ]
 
